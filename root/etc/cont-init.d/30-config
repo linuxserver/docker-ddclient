@@ -1,10 +1,11 @@
 #!/usr/bin/with-contenv bash
 
+
 # copy default config if not present in /config
 [[ ! -e /config/ddclient.conf ]] && \
 	cp /defaults/ddclient.conf /config
 
-# permissions
+#Â permissions
 chown -R abc:abc \
 	/config
 chmod -R 765 \

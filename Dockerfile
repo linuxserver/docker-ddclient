@@ -53,6 +53,7 @@ RUN \
 	build-dependencies && \
  rm -rf \
 	/config/.cpanm \
+	/root/.cpanm \
 	/tmp/*
 	
 # copy local files

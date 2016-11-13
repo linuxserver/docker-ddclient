@@ -6,6 +6,9 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
+# copy local files
+COPY root/ /
+
 # install build time dependencies
 RUN \
  apk add --no-cache --virtual=build-dependencies \
@@ -39,6 +42,9 @@ RUN \
  tar xf /tmp/ddclient.tar.bz2 -C \
  /tmp/ddclient --strip-components=1 && \
  cp /tmp/ddclient/ddclient /usr/bin/ && \
+ cp /defaults/ddclient.conf /ddclient.conf && \
+ chmod 600 /ddclient.conf && \
+ chown ddclient:ddclient /ddclient.conf && \
 
 # add runtime folders and change permissions
  mkdir -p /var/cache/ddclient && \
@@ -55,9 +61,6 @@ RUN \
 	/config/.cpanm \
 	/root/.cpanm \
 	/tmp/*
-	
-# copy local files
-COPY root/ /
 
 # ports and volumes
 VOLUME /config

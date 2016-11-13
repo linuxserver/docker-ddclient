@@ -1,8 +1,10 @@
 #!/usr/bin/with-contenv bash
 
 # starting inotify to watch /config/ddclient.conf and restart ddclient if changed.
-while inotifywait -e modify /config/ddclient.conf; do
-#	kill "$(pgrep ddclient)"
+while inotifywait -e close_write /config/ddclient.conf; do
+	cp /config/ddclient.conf /ddclient.conf
+	chmod 600 /ddclient.conf
+	chown ddclient:ddclient /ddclient.conf
 	kill "$(cat /var/run/ddclient/ddclient.pid)"
 	echo "ddclient have been restarted"
 done

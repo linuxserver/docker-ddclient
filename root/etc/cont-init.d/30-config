@@ -1,5 +1,9 @@
 #!/usr/bin/with-contenv bash
 
+# copy config from /config to root
+[[ -e /config/ddclient.conf ]] && \
+	cp /config/ddclient.conf /ddclient.conf
+
 # copy default config if not present in /config
 [[ ! -e /config/ddclient.conf ]] && \
 	cp /defaults/ddclient.conf /config

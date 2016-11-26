@@ -7,9 +7,10 @@ The [LinuxServer.io](https://linuxserver.io) team brings you another container r
 
 # linuxserver/ddclient
 
-DDclient is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways. 
+[DDClient](https://sourceforge.net/p/ddclient/wiki/Home/) is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways. 
 
-
+[![ddclient](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient.png)][ddclienturl]
+[ddclienturl]: https://sourceforge.net/p/ddclient/wiki/Home/
 ## Usage
 
 ```
@@ -17,7 +18,8 @@ docker create \
   --name=ddclient \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
-  linuxserver/docker-ddclient
+  -e TZ=<Timezone> \
+  linuxserver/ddclient
 ```
 
 ## Parameters
@@ -28,12 +30,14 @@ So -p 8080:80 would expose port 80 from inside the container to be accessible fr
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
 
 
+
 * `-p 1234` - the port(s)
 * `-v /config` - explain what lives here
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e TZ` - for timezone information *eg Europe/London, etc*
 
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tvheadend-unstable /bin/bash`.
+It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it ddclient /bin/bash`.
 
 ### User / Group Identifiers
 
@@ -52,9 +56,22 @@ Edit the ddclient.conf file found in your /config volume. This config file have 
 
 ## Info
 
-* Shell access whilst the container is running: `docker exec -it tvheadend-unstable /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f tvheadend-unstable`
+* Shell access whilst the container is running: `docker exec -it ddclient /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f ddclient`
+
+* container version number 
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' ddclient`
+
+* image version number
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' ddclient`
 
 ## Versions
 
++ **26.11.2016:** Update README to new standard and add icon and other small details.
 + **29.08.2016:** Initial release.
+
+## Credits
+
+Icon made by [Freepik](http://www.flaticon.com/authors/freepik) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

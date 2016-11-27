@@ -1,15 +1,25 @@
 #!/usr/bin/with-contenv bash
 
-# copy config from /config to root
-[[ -e /config/ddclient.conf ]] && \
-	cp /config/ddclient.conf /ddclient.conf
+# make our folders
+mkdir -p \
+	/var/cache/ddclient \
+	/var/run/ddclient
 
 # copy default config if not present in /config
 [[ ! -e /config/ddclient.conf ]] && \
 	cp /defaults/ddclient.conf /config
 
+# copy config from /config to root
+cp /config/ddclient.conf /ddclient.conf
+
 # permissions
+chown abc:abc \
+	/ddclient.conf
+chmod 600 \
+	/ddclient.conf
 chown -R abc:abc \
-	/config
+	/config \
+	/var/cache/ddclient \
+	/var/run/ddclient
 chmod -R 765 \
 	/config

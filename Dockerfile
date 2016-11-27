@@ -6,8 +6,8 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# copy local files
-COPY root/ /
+# package versions
+ARG DDCLIENT_VER="3.8.3"
 
 # install build time dependencies
 RUN \
@@ -31,28 +31,16 @@ RUN \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm JSON::Any && \
 
-# create ddclient user for running ddclient so it doesn't modify permissions of the config file
- useradd -u 931 -U -s /bin/false ddclient && \
-
 # install ddclient
- mkdir -p /tmp/ddclient && \
+ mkdir -p \
+	/tmp/ddclient && \
  curl -o \
  /tmp/ddclient.tar.bz2 -L \
-	http://vorboss.dl.sourceforge.net/project/ddclient/ddclient/ddclient-3.8.3/ddclient-3.8.3.tar.bz2 && \
- tar xf /tmp/ddclient.tar.bz2 -C \
- /tmp/ddclient --strip-components=1 && \
- cp /tmp/ddclient/ddclient /usr/bin/ && \
- cp /defaults/ddclient.conf /ddclient.conf && \
- chmod 600 /ddclient.conf && \
- chown ddclient:ddclient /ddclient.conf && \
-
-# add runtime folders and change permissions
- mkdir -p /var/cache/ddclient && \
- chown ddclient:ddclient /var/cache/ddclient && \
- mkdir -p /var/run/ddclient && \
- chown ddclient:ddclient /var/run/ddclient && \
-
-
+	"http://vorboss.dl.sourceforge.net/project/ddclient/ddclient/ddclient-${DDCLIENT_VER}/ddclient-${DDCLIENT_VER}.tar.bz2" && \
+ tar xf \
+ /tmp/ddclient.tar.bz2 -C \
+	/tmp/ddclient --strip-components=1 && \
+ install -Dm755 /tmp/ddclient/ddclient /usr/bin/ && \
 
 # cleanup
  apk del --purge \
@@ -61,6 +49,9 @@ RUN \
 	/config/.cpanm \
 	/root/.cpanm \
 	/tmp/*
+
+# copy local files
+COPY root/ /
 
 # ports and volumes
 VOLUME /config

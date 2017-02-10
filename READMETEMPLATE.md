@@ -69,6 +69,7 @@ Edit the ddclient.conf file found in your /config volume. This config file have 
 
 ## Versions
 
++ **10.02.2017:** Rebase to alpine 3.5.
 + **26.11.2016:** Update README to new standard and add icon and other small details.
 + **29.08.2016:** Initial release.
 

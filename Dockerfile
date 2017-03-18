@@ -36,7 +36,7 @@ RUN \
 	/tmp/ddclient && \
  curl -o \
  /tmp/ddclient.tar.bz2 -L \
-	"http://vorboss.dl.sourceforge.net/project/ddclient/ddclient/ddclient-${DDCLIENT_VER}/ddclient-${DDCLIENT_VER}.tar.bz2" && \
+	"https://sourceforge.net/projects/ddclient/files/ddclient/ddclient-${DDCLIENT_VER}/ddclient-${DDCLIENT_VER}.tar.bz2/download" && \
  tar xf \
  /tmp/ddclient.tar.bz2 -C \
 	/tmp/ddclient --strip-components=1 && \

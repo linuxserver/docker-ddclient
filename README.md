@@ -17,7 +17,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 
 [DDClient][appurl] is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways.
 
-[![ddclient](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient.png)][appurl]
+[![ddclient]()][appurl]
 
 ## Usage
 
@@ -76,10 +76,7 @@ Edit the ddclient.conf file found in your /config volume. This config file have 
 
 ## Versions
 
++ **28.05.2017:** Rebase to alpine 3.6.
 + **10.02.2017:** Rebase to alpine 3.5.
 + **26.11.2016:** Update README to new standard and add icon and other small details.
 + **29.08.2016:** Initial release.
-
-## Credits
-
-Icon made by [Freepik](http://www.flaticon.com/authors/freepik) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

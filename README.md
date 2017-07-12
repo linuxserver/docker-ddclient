@@ -13,8 +13,11 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/ddclient
+[![](https://images.microbadger.com/badges/version/linuxserver/ddclient.svg)](https://microbadger.com/images/linuxserver/ddclient "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/ddclient.svg)](https://microbadger.com/images/linuxserver/ddclient "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/ddclient.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/ddclient.svg)][hub][![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Builders/x86-64/x86-64-ddclient)](https://ci.linuxserver.io/job/Docker-Builders/job/x86-64/job/x86-64-ddclient/)
 
-[DDClient](https://sourceforge.net/p/ddclient/wiki/Home/) is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways.
+[DDClient][appurl] is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways.
+
+[![ddclient](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient.png)][appurl]
 
 ## Usage
 
@@ -23,7 +26,7 @@ docker create \
   --name=ddclient \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
-  -p 1234:1234 \
+  -e TZ=<Timezone> \
   linuxserver/ddclient
 ```
 
@@ -36,10 +39,10 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 
 
-* `-p 1234` - the port(s)
-* `-v /config` - explain what lives here
+* `-v /config` - Where ddclient should store its config files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e TZ` - for timezone information *eg Europe/London, etc*
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it ddclient /bin/bash`.
 
@@ -56,8 +59,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Insert a basic user guide here to get a n00b up and running with the software inside the container. DELETE ME
-
+Edit the ddclient.conf file found in your /config volume. This config file have many providers to choose from and you basically just have to uncomment your provider and add username/password where requested. If you modify ddclient.conf, ddclient will automaticcaly restart and read the config.
 
 ## Info
 

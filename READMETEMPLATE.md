@@ -1,16 +1,21 @@
-![https://linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)
+[linuxserverurl]: https://linuxserver.io
+[forumurl]: https://forum.linuxserver.io
+[ircurl]: https://www.linuxserver.io/irc/
+[podcasturl]: https://www.linuxserver.io/podcast/
+[appurl]: https://sourceforge.net/p/ddclient/wiki/Home/
+[hub]: https://hub.docker.com/r/linuxserver/ddclient/
 
-The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring easy user mapping and community support. Find us for support at:
-* [forum.linuxserver.io](https://forum.linuxserver.io)
-* [IRC](https://www.linuxserver.io/irc/) on freenode at `#linuxserver.io`
-* [Podcast](https://www.linuxserver.io/podcast/) covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
+
+The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
+* [forum.linuxserver.io][forumurl]
+* [IRC][ircurl] on freenode at `#linuxserver.io`
+* [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/ddclient
 
-[DDClient](https://sourceforge.net/p/ddclient/wiki/Home/) is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways. 
+[DDClient](https://sourceforge.net/p/ddclient/wiki/Home/) is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways.
 
-[![ddclient](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient.png)][ddclienturl]
-[ddclienturl]: https://sourceforge.net/p/ddclient/wiki/Home/
 ## Usage
 
 ```
@@ -18,7 +23,7 @@ docker create \
   --name=ddclient \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
-  -e TZ=<Timezone> \
+  -p 1234:1234 \
   linuxserver/ddclient
 ```
 
@@ -35,7 +40,6 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /config` - explain what lives here
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
-* `-e TZ` - for timezone information *eg Europe/London, etc*
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it ddclient /bin/bash`.
 
@@ -52,7 +56,8 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Edit the ddclient.conf file found in your /config volume. This config file have many providers to choose from and you basically just have to uncomment your provider and add username/password where requested. If you modify ddclient.conf, ddclient will automaticcaly restart and read the config.
+Insert a basic user guide here to get a n00b up and running with the software inside the container. DELETE ME
+
 
 ## Info
 
@@ -65,7 +70,7 @@ Edit the ddclient.conf file found in your /config volume. This config file have 
 
 * image version number
 
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' ddclient`
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/ddclient`
 
 ## Versions
 

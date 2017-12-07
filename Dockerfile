@@ -1,16 +1,16 @@
-FROM lsiobase/alpine:3.6
-MAINTAINER saarg
+FROM lsiobase/alpine:3.7
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="saarg"
 
 # package versions
 ARG DDCLIENT_VER="3.8.3"
 
-# install build time dependencies
 RUN \
+ echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
 	bzip2 \
 	curl \
@@ -18,20 +18,17 @@ RUN \
 	make \
 	tar \
 	wget && \
-
-# install runtime dependencies
+ echo "**** install runtime packages ****" && \
  apk add --no-cache \
 	inotify-tools \
 	perl \
 	perl-digest-sha1 \
 	perl-io-socket-ssl \
 	perl-json && \
-
-# install Perl cpan modules not in alpine
+ echo "***** install perl modules ****" && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm JSON::Any && \
-
-# install ddclient
+ echo "**** install ddclient ****" && \
  mkdir -p \
 	/tmp/ddclient && \
  curl -o \
@@ -41,8 +38,7 @@ RUN \
  /tmp/ddclient.tar.bz2 -C \
 	/tmp/ddclient --strip-components=1 && \
  install -Dm755 /tmp/ddclient/ddclient /usr/bin/ && \
-
-# cleanup
+ echo "**** cleanup ****" && \
  apk del --purge \
 	build-dependencies && \
  rm -rf \

@@ -28,6 +28,7 @@ RUN \
  echo "***** install perl modules ****" && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm JSON::Any && \
+ cpanm Data::Validate::IP && \
  echo "**** install ddclient ****" && \
  mkdir -p \
 	/tmp/ddclient && \

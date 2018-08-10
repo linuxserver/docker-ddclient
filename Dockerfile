@@ -7,7 +7,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="saarg"
 
 # package versions
-ARG DDCLIENT_VER="3.8.3"
+ARG DDCLIENT_VER="3.9.0"
 
 RUN \
  echo "**** install build packages ****" && \
@@ -32,10 +32,10 @@ RUN \
  mkdir -p \
 	/tmp/ddclient && \
  curl -o \
- /tmp/ddclient.tar.bz2 -L \
-	"https://sourceforge.net/projects/ddclient/files/ddclient/ddclient-${DDCLIENT_VER}/ddclient-${DDCLIENT_VER}.tar.bz2/download" && \
+ /tmp/ddclient.tar.gz -L \
+	"https://sourceforge.net/projects/ddclient/files/ddclient/ddclient-${DDCLIENT_VER}/ddclient-${DDCLIENT_VER}.tar.gz/download" && \
  tar xf \
- /tmp/ddclient.tar.bz2 -C \
+ /tmp/ddclient.tar.gz -C \
 	/tmp/ddclient --strip-components=1 && \
  install -Dm755 /tmp/ddclient/ddclient /usr/bin/ && \
  echo "**** cleanup ****" && \

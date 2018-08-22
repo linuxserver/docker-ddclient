@@ -76,6 +76,7 @@ Edit the ddclient.conf file found in your /config volume. This config file has m
 
 ## Versions
 
++ **22.08.18:** Rebase to alpine 3.8.
 + **10.08.18:** Update to ddclient v3.9.0. For Cloudflare users, please ensure you remove the line `server=www.cloudflare.com` from your `ddclient.conf`.
 + **07.12.17:** Rebase to alpine 3.7.
 + **28.05.17:** Rebase to alpine 3.6.

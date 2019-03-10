@@ -22,6 +22,7 @@ RUN \
 	jq \
 	perl \
 	perl-digest-sha1 \
+	perl-io-socket-inet6 \
 	perl-io-socket-ssl \
 	perl-json && \
  echo "***** install perl modules ****" && \

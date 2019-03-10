@@ -32,6 +32,8 @@ jq jq-1.6-r0
 libbz2 libbz2-1.0.6-r6
 perl perl-5.26.3-r0
 perl-digest-sha1 perl-digest-sha1-2.13-r9
+perl-socket6 perl-socket6-0.28-r0
+perl-io-socket-inet6 perl-io-socket-inet6-2.72-r0
 libidn libidn-1.35-r0
 perl-net-libidn perl-net-libidn-0.12-r5
 perl-net-ssleay perl-net-ssleay-1.85-r4

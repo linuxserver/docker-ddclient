@@ -46,6 +46,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "10.03.19:", desc: "Add perl-io-socket-inet6 for ipv6 support." }
   - { date: "22.02.19:", desc: "Rebasing to alpine 3.9." }
   - { date: "11.02.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "22.08.18:", desc: "Rebase to alpine 3.8." }

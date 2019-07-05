@@ -46,6 +46,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "10.03.19:", desc: "Add perl-io-socket-inet6 for ipv6 support." }
   - { date: "22.02.19:", desc: "Rebasing to alpine 3.9." }

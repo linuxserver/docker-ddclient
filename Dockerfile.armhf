@@ -11,13 +11,13 @@ RUN \
  echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
 	bzip2 \
-	curl \
 	gcc \
 	make \
 	tar \
 	wget && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
+    curl \
 	inotify-tools \
 	jq \
 	perl \

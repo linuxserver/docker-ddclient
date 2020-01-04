@@ -13,13 +13,9 @@ mkdir -p \
 cp /config/ddclient.conf /ddclient.conf
 
 # permissions
-chown abc:abc \
-	/ddclient.conf
-chmod 600 \
-	/ddclient.conf
 chown -R abc:abc \
 	/config \
 	/var/cache/ddclient \
 	/var/run/ddclient
-chmod -R 765 \
+chmod -R 600 \
 	/config

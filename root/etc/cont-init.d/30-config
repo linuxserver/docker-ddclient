@@ -2,24 +2,24 @@
 
 # make our folders
 mkdir -p \
-        /var/cache/ddclient \
-        /var/run/ddclient
+    /var/cache/ddclient \
+    /var/run/ddclient
 
 # copy default config if not present in /config
 [[ ! -e /config/ddclient.conf ]] && \
-        cp /defaults/ddclient.conf /config
+    cp /defaults/ddclient.conf /config
 
 # copy config from /config to root
 cp /config/ddclient.conf /ddclient.conf
 
 # permissions
 chown -R abc:abc \
-        /config \
-        /var/cache/ddclient \
-        /var/run/ddclient \
-        /ddclient.conf
+    /config \
+    /var/cache/ddclient \
+    /var/run/ddclient \
+    /ddclient.conf
 
 chmod 700 /config
 chmod 600 \
-	/config/* \
-	/ddclient.conf
+    /config/* \
+    /ddclient.conf

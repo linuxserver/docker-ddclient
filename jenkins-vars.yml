@@ -2,12 +2,14 @@
 
 # jenkins variables
 project_name: docker-ddclient
-external_type: na
-custom_version_command: "curl -sL 'http://sourceforge.net/projects/ddclient/best_release.json' | jq -r '.platform_releases.linux.filename' | awk -F '(ddclient-|.zip)' '{print $3}'"
+external_type: github_stable
 release_type: stable
 release_tag: latest
 ls_branch: master
 repo_vars:
+  - EXT_GIT_BRANCH = 'master'
+  - EXT_USER = 'ddclient'
+  - EXT_REPO = 'ddclient'
   - BUILD_VERSION_ARG = 'DDCLIENT_VERSION'
   - LS_USER = 'linuxserver'
   - LS_REPO = 'docker-ddclient'

@@ -32,14 +32,13 @@ RUN \
 	JSON::Any && \
  echo "**** install ddclient ****" && \
  if [ -z ${DDCLIENT_VERSION+x} ]; then \
-	DDCLIENT_VERSION=$(curl -sL 'http://sourceforge.net/projects/ddclient/best_release.json' \
-	| jq -r '.platform_releases.linux.filename' | awk -F '(ddclient-|.zip)' '{print $3}'); \
+	DDCLIENT_VERSION=3.9.1; \
  fi && \
  mkdir -p \
 	/tmp/ddclient && \
  curl -o \
  /tmp/ddclient.tar.gz -L \
-	"https://sourceforge.net/projects/ddclient/files/ddclient/ddclient-${DDCLIENT_VERSION}/ddclient-${DDCLIENT_VERSION}.tar.gz/download" && \
+    "https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz" && \
  tar xf \
  /tmp/ddclient.tar.gz -C \
 	/tmp/ddclient --strip-components=1 && \

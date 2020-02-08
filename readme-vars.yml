@@ -2,7 +2,7 @@
 
 # project information
 project_name: ddclient
-project_url: "https://sourceforge.net/p/ddclient/wiki/Home/"
+project_url: "https://github.com/ddclient/ddclient"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient-logo.png"
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider. It was originally written by Paul Burry and is now mostly by wimpunk. It has the capability to update more than just dyndns and it can fetch your WAN-ipaddress in a few different ways."
@@ -46,7 +46,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "08.02.20:", desc: "Fix permissions." }
+  - { date: "08.02.20:", desc: "Ingest from Github." }
   - { date: "06.02.19:", desc: "Fix permissions." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }

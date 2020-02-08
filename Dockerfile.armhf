@@ -17,7 +17,7 @@ RUN \
 	wget && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
-    curl \
+	curl \
 	inotify-tools \
 	jq \
 	perl \
@@ -32,14 +32,14 @@ RUN \
 	JSON::Any && \
  echo "**** install ddclient ****" && \
  if [ -z ${DDCLIENT_VERSION+x} ]; then \
-	DDCLIENT_VERSION=$(curl -sL 'http://sourceforge.net/projects/ddclient/best_release.json' \
-	| jq -r '.platform_releases.linux.filename' | awk -F '(ddclient-|.zip)' '{print $3}'); \
+	DDCLIENT_VERSION=$(curl -sX GET "https://api.github.com/repos/ddclient/ddclient/releases/latest" \
+	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
  mkdir -p \
 	/tmp/ddclient && \
  curl -o \
  /tmp/ddclient.tar.gz -L \
-	"https://sourceforge.net/projects/ddclient/files/ddclient/ddclient-${DDCLIENT_VERSION}/ddclient-${DDCLIENT_VERSION}.tar.gz/download" && \
+	"https://github.com/ddclient/ddclient/archive/${DDCLIENT_VERSION}.tar.gz" && \
  tar xf \
  /tmp/ddclient.tar.gz -C \
 	/tmp/ddclient --strip-components=1 && \

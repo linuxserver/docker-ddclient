@@ -38,7 +38,7 @@ RUN \
 	/tmp/ddclient && \
  curl -o \
  /tmp/ddclient.tar.gz -L \
-    "https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz" && \
+     "https://github.com/ddclient/ddclient/archive/v${DDCLIENT_VERSION}.tar.gz" && \
  tar xf \
  /tmp/ddclient.tar.gz -C \
 	/tmp/ddclient --strip-components=1 && \

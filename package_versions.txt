@@ -27,7 +27,7 @@ ncurses-libs-6.1_p20200118-r4
 ncurses-terminfo-base-6.1_p20200118-r4
 nghttp2-libs-1.40.0-r1
 oniguruma-6.9.4-r0
-perl-5.30.1-r0
+perl-5.30.3-r0
 perl-digest-sha1-2.13-r11
 perl-io-socket-inet6-2.72-r1
 perl-io-socket-ssl-2.066-r0

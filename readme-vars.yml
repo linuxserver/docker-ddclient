@@ -46,6 +46,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "01.24.21:", desc: "Improve support for automatically restarting ddclient when config modified." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "08.02.20:", desc: "Ingest from Github." }
   - { date: "06.02.19:", desc: "Fix permissions." }

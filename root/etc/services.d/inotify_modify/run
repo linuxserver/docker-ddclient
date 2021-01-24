@@ -1,10 +1,15 @@
 #!/usr/bin/with-contenv bash
 
 # starting inotify to watch /config/ddclient.conf and restart ddclient if changed.
-while inotifywait -e modify /config/ddclient.conf; do
-	cp /config/ddclient.conf /ddclient.conf
-	chown abc:abc /ddclient.conf
-	chmod 600 /ddclient.conf
-	s6-svc -h /var/run/s6/services/ddclient
-	echo "ddclient has been restarted"
-done
+inotifywait -mq -e close_write,moved_to --format "%e %f" /config/ |
+        while read events filename; do
+                if [ "$filename" != "ddclient.conf" ]; then
+                        continue
+                fi
+
+                cp /config/ddclient.conf /ddclient.conf
+                chown abc:abc /ddclient.conf
+                chmod 600 /ddclient.conf
+                s6-svc -h /var/run/s6/services/ddclient
+                echo "ddclient has been restarted"
+        done

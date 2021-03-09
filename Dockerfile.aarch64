@@ -17,6 +17,7 @@ RUN \
 	wget && \
  echo "**** install runtime packages ****" && \
  apk add --no-cache \
+	bind-tools \
 	curl \
 	inotify-tools \
 	jq \

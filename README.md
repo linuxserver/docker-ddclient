@@ -214,6 +214,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **08.03.21:** - Added bind-tools to provide nsupdate
 * **01.06.20:** - Rebasing to alpine 3.12.
 * **08.02.20:** - Ingest from Github.
 * **06.02.19:** - Fix permissions.

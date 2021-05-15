@@ -46,6 +46,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "15.05.21:", desc: "Distribute script 'sample-get-ip-from-fritzbox' from ddclient repo" }  
   - { date: "08.03.21:", desc: "Added bind-tools to provide nsupdate" }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "08.02.20:", desc: "Ingest from Github." }

@@ -45,6 +45,8 @@ RUN \
  /tmp/ddclient.tar.gz -C \
 	/tmp/ddclient --strip-components=1 && \
  install -Dm755 /tmp/ddclient/ddclient /usr/bin/ && \
+ mkdir -p /etc/ddclient/ && \
+ cp /tmp/ddclient/sample-get-ip-from-fritzbox /etc/ddclient/get-ip-from-fritzbox && \
  echo "**** cleanup ****" && \
  apk del --purge \
 	build-dependencies && \

@@ -42,10 +42,17 @@ optional_block_1: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Edit the ddclient.conf file found in your /config volume. This config file has many providers to choose from and you basically just have to uncomment your provider and add username/password where requested. If you modify ddclient.conf, ddclient will automaticcaly restart and read the config.
+  Edit the `ddclient.conf` file found in your `/config` volume (also see official [ddclient documentation](https://ddclient.net)). This config file has many providers to choose from and you basically just have to uncomment your provider and add username/password where requested. If you modify ddclient.conf, ddclient will automaticcaly restart and read the config.
+  
+  ### Get dynamic IP from Fritz.Box
+  If ddclient shall fetch the dynamic (public) IP-address from a fritz.box (AVM) add the following line to `/config/ddclient.conf`:
+  ````
+  use=cmd, cmd=/etc/ddclient/get-ip-from-fritzbox
+  ````
 
 # changelog
 changelogs:
+  - { date: "15.05.21:", desc: "Distribute script 'sample-get-ip-from-fritzbox' from ddclient repo" }  
   - { date: "08.03.21:", desc: "Added bind-tools to provide nsupdate" }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "08.02.20:", desc: "Ingest from Github." }

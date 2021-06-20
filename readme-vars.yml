@@ -43,6 +43,7 @@ optional_block_1: false
 app_setup_block_enabled: true
 app_setup_block: |
   Edit the `ddclient.conf` file found in your `/config` volume (also see official [ddclient documentation](https://ddclient.net)). This config file has many providers to choose from and you basically just have to uncomment your provider and add username/password where requested. If you modify ddclient.conf, ddclient will automaticcaly restart and read the config.
+  Use the template from `/defaults/ddclient.conf` in order to e.g. keep the `daemon` interval configuration, as otherwise `ddclient` uses an re-check interval of one second, which is too much for many dynamic DNS services.
   
   ### Get dynamic IP from Fritz.Box
   If ddclient shall fetch the dynamic (public) IP-address from a fritz.box (AVM) add the following line to `/config/ddclient.conf`:

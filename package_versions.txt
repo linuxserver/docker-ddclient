@@ -1,6 +1,6 @@
 alpine-baselayout-3.2.0-r7
 alpine-keys-2.2-r0
-apk-tools-2.10.6-r0
+apk-tools-2.10.7-r0
 bash-5.0.17-r0
 bind-libs-9.16.15-r0
 bind-tools-9.16.15-r0

@@ -6,8 +6,8 @@ bind-libs-9.16.22-r4
 bind-tools-9.16.22-r4
 brotli-libs-1.0.9-r5
 busybox-1.34.1-r3
-ca-certificates-20191127-r7
-ca-certificates-bundle-20191127-r7
+ca-certificates-20211220-r0
+ca-certificates-bundle-20211220-r0
 coreutils-9.0-r2
 curl-7.80.0-r0
 fstrm-0.6.1-r0

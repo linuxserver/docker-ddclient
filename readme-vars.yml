@@ -52,6 +52,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "20.10.22:", desc: "Update build instructions for 3.10.0. Update default `ddclient.conf`." } 
   - { date: "15.01.22:", desc: "Rebase to Alpine 3.15" }  
   - { date: "15.05.21:", desc: "Distribute script 'sample-get-ip-from-fritzbox' from ddclient repo" }  
   - { date: "08.03.21:", desc: "Added bind-tools to provide nsupdate" }

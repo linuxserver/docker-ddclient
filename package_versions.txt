@@ -22,12 +22,12 @@ libattr-2.5.1-r1
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcom_err-1.46.4-r0
-libcrypto1.1-1.1.1q-r0
+libcrypto1.1-1.1.1s-r1
 libcurl-7.80.0-r4
 libintl-0.21-r0
 libproc-3.3.17-r0
 libretls-3.3.4-r3
-libssl1.1-1.1.1q-r0
+libssl1.1-1.1.1s-r1
 libuv-1.42.0-r0
 libverto-0.3.2-r0
 libxml2-2.9.14-r2
@@ -54,7 +54,7 @@ scanelf-1.3.3-r0
 shadow-4.8.1-r1
 skalibs-2.11.0.0-r0
 ssl_client-1.34.1-r7
-tzdata-2022c-r0
+tzdata-2022f-r1
 utmps-0.1.0.3-r0
 xz-5.2.5-r1
 xz-libs-5.2.5-r1

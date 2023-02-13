@@ -26,7 +26,7 @@ param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where ddclient should store its config files." }
+  - { vol_path: "/config", vol_host_path: "/path/to/data", desc: "Where ddclient should store its config files." }
 param_usage_include_ports: false
 param_device_map: false
 cap_add_param: false
@@ -52,6 +52,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "13.02.23:", desc: "Rebase to Alpine 3.17, migrate to s6v3." } 
   - { date: "20.10.22:", desc: "Update build instructions for 3.10.0. Update default `ddclient.conf`." } 
   - { date: "15.01.22:", desc: "Rebase to Alpine 3.15" }  
   - { date: "15.05.21:", desc: "Distribute script 'sample-get-ip-from-fritzbox' from ddclient repo" }  

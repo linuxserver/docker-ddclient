@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# starting inotify to watch /config/ddclient.conf and restart ddclient if changed.
+while inotifywait -e modify /config/ddclient.conf; do
+    cp /config/ddclient.conf /ddclient.conf
+    lsiown abc:abc /ddclient.conf
+    chmod 600 /ddclient.conf
+    s6-svc -h /run/service/svc-ddclient
+    echo "ddclient has been restarted"
+done

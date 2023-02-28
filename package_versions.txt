@@ -12,7 +12,7 @@ busybox-binsh-1.35.0-r29
 ca-certificates-20220614-r4
 ca-certificates-bundle-20220614-r4
 coreutils-9.1-r0
-curl-7.87.0-r1
+curl-7.87.0-r2
 fstrm-0.6.1-r1
 inotify-tools-3.22.6.0-r0
 inotify-tools-libs-3.22.6.0-r0
@@ -26,7 +26,7 @@ libbz2-1.0.8-r4
 libc-utils-0.7.2-r3
 libcom_err-1.46.5-r4
 libcrypto3-3.0.8-r0
-libcurl-7.87.0-r1
+libcurl-7.87.0-r2
 libintl-0.21.1-r1
 libproc-3.3.17-r2
 libssl3-3.0.8-r0

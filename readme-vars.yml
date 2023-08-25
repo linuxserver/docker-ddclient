@@ -45,6 +45,7 @@ app_setup_block: |
   ````
 # changelog
 changelogs:
+  - {date: "25.08.23:", desc: "Rebase to Alpine 3.18."}
   - {date: "04.07.23:", desc: "Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)"}
   - {date: "13.02.23:", desc: "Rebase to Alpine 3.17, migrate to s6v3."}
   - {date: "20.10.22:", desc: "Update build instructions for 3.10.0. Update default `ddclient.conf`."}

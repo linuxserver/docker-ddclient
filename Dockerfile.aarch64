@@ -30,22 +30,13 @@ RUN \
     Data::Validate::IP \
     JSON::Any && \
   echo "**** install ddclient ****" && \
-  if [ -z ${DDCLIENT_VERSION+x} ]; then \
-    DDCLIENT_VERSION=$(curl -sX GET "https://api.github.com/repos/ddclient/ddclient/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
-  fi && \
-  mkdir -p \
-    /tmp/ddclient && \
-  curl -o \
-  /tmp/ddclient.tar.gz -L \
-    "https://github.com/ddclient/ddclient/archive/${DDCLIENT_VERSION}.tar.gz" && \
-  tar xf \
-  /tmp/ddclient.tar.gz -C \
-    /tmp/ddclient --strip-components=1 && \
-  cp /tmp/ddclient/ddclient.in /usr/bin/ddclient.in && \
+  curl -o /tmp/ddclient.zip -L \
+    "https://github.com/ddclient/ddclient/archive/refs/heads/master.zip" && \
+  unzip /tmp/ddclient.zip -o -d /tmp/ && \
+  cp /tmp/ddclient-master/ddclient.in /usr/bin/ddclient.in && \
   ln -s /usr/bin/ddclient.in /usr/bin/ddclient && \
   mkdir -p /etc/ddclient/ && \
-  cp /tmp/ddclient/sample-get-ip-from-fritzbox /etc/ddclient/get-ip-from-fritzbox && \
+  cp /tmp/ddclient-master/sample-get-ip-from-fritzbox /etc/ddclient/get-ip-from-fritzbox && \
   echo "**** cleanup ****" && \
   apk del --purge \
     build-dependencies && \

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.17
+FROM ghcr.io/linuxserver/baseimage-alpine:3.18
 
 # set version label
 ARG BUILD_DATE
@@ -12,8 +12,7 @@ LABEL maintainer="saarg"
 RUN \
   echo "**** install build packages ****" && \
   apk add --no-cache --virtual=build-dependencies \
-    gcc \
-    make \
+    build-base \
     wget && \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
@@ -23,7 +22,8 @@ RUN \
     perl-digest-sha1 \
     perl-io-socket-inet6 \
     perl-io-socket-ssl \
-    perl-json && \
+    perl-json \
+    perl-netaddr-ip && \
   echo "***** install perl modules ****" && \
   curl -L http://cpanmin.us | perl - App::cpanminus && \
   cpanm \

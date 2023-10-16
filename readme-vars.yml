@@ -38,6 +38,18 @@ app_setup_block_enabled: true
 app_setup_block: |
   Edit the `ddclient.conf` file found in your `/config` volume (also see official [ddclient documentation](https://ddclient.net)). This config file has many providers to choose from and you basically just have to uncomment your provider and add username/password where requested. If you modify ddclient.conf, ddclient will automaticcaly restart and read the config.
 
+  ### Passing secrets to ddclient
+  To pass secret values such as service passwords to ddclient, add the "_env" suffix to any secret parameter and set it's value to the *name* of the environment variable containing the secret:
+  ````
+  protocol=namecheap,                       \
+  server=dynamicdns.park-your-domain.com,   \
+  login=my_login_name,                      \
+  password_env=DD_PASSWORD \
+  @
+  ````
+
+  This example uses the value of the environment variable `$DD_PASSWORD` to set the password parameter.
+
   ### Get dynamic IP from Fritz.Box
   If ddclient shall fetch the dynamic (public) IP-address from a fritz.box (AVM) add the following line to `/config/ddclient.conf`:
   ````

@@ -42,6 +42,7 @@ RUN \
   tar xf \
   /tmp/ddclient.tar.gz -C \
     /tmp/ddclient --strip-components=1 && \
+  sed -i "s/@PACKAGE_VERSION@/${DDCLIENT_VERSION}/g" /tmp/ddclient/ddclient.in && \
   cp /tmp/ddclient/ddclient.in /usr/bin/ddclient.in && \
   ln -s /usr/bin/ddclient.in /usr/bin/ddclient && \
   mkdir -p /etc/ddclient/ && \

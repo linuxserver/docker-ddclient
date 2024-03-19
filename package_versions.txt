@@ -56,7 +56,7 @@ perl-digest-sha1        2.13-r17              apk
 perl-io-socket-inet6    2.73-r2               apk     
 perl-io-socket-ssl      2.084-r0              apk     
 perl-json               4.10-r1               apk     
-perl-mozilla-ca         20230821-r0           apk     
+perl-mozilla-ca         20240313-r0           apk     
 perl-net-ssleay         1.92-r5               apk     
 perl-netaddr-ip         4.079-r11             apk     
 perl-socket6            0.29-r9               apk     

@@ -16,6 +16,11 @@ param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files" }
+
+readonly_supported: true
+readonly_message: |
+  `/tmp` must also be mounted to tmpfs for this image.
+
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |

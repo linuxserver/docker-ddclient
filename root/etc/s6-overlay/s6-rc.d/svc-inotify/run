@@ -3,6 +3,7 @@
 
 # starting inotify to watch /config/ddclient.conf and restart ddclient if changed.
 while inotifywait -e modify /config/ddclient.conf; do
+    lsiown abc:abc /config/ddclient.conf
     chmod 600 /config/ddclient.conf
     s6-svc -h /run/service/svc-ddclient
     echo "ddclient has been restarted"

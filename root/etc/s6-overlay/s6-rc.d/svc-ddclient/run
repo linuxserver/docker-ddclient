@@ -2,4 +2,4 @@
 # shellcheck shell=bash
 
 exec \
-    s6-setuidgid abc /usr/bin/ddclient --foreground --file /config/ddclient.conf --cache /run/ddclient-cache
+    s6-setuidgid abc /usr/bin/ddclient --foreground --file /config/ddclient.conf --cache /run/ddclient-cache/ddclient.cache

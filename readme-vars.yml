@@ -33,6 +33,7 @@ app_setup_block: |
   ````
 # changelog
 changelogs:
+  - {date: "08.07.24:", desc: "Fix cache issue."}
   - {date: "08.07.24:", desc: "Don't copy config from `/config/ddclient.conf` to `/ddclient.conf` at runtime."}
   - {date: "27.06.24:", desc: "Rebase to Alpine 3.20."}
   - {date: "23.12.23:", desc: "Rebase to Alpine 3.19."}

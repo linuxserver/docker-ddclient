@@ -3,25 +3,23 @@
 
 # make our folders
 mkdir -p \
-    /var/cache/ddclient \
-    /var/run/ddclient
+    /run/ddclient-cache \
+    /run/ddclient
 
 # copy default config if not present in /config
 if [[ ! -e /config/ddclient.conf ]]; then
     cp /defaults/ddclient.conf /config
 fi
 
-# copy config from /config to root
-cp /config/ddclient.conf /ddclient.conf
-
 # permissions
 lsiown -R abc:abc \
     /config \
-    /var/cache/ddclient \
-    /var/run/ddclient \
-    /ddclient.conf
+    /run/ddclient \
+    /run/ddclient-cache
 
-chmod 700 /config
+chmod 700 \
+    /config \
+    /run/ddclient-cache
+
 chmod 600 \
-    /config/* \
-    /ddclient.conf
+    /config/*

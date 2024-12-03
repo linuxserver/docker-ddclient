@@ -15,12 +15,10 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files" }
-
+  - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files"}
 readonly_supported: true
 readonly_message: |
   `/tmp` must also be mounted to tmpfs for this image.
-
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
@@ -31,6 +29,51 @@ app_setup_block: |
   ````
   use=cmd, cmd=/etc/ddclient/get-ip-from-fritzbox
   ````
+# init diagram
+init_diagram: |
+  "ddclient:latest": {
+    docker-mods
+    base {
+      fix-attr +\nlegacy cont-init
+    }
+    docker-mods -> base
+    legacy-services
+    custom services
+    init-services -> legacy-services
+    init-services -> custom services
+    custom services -> legacy-services
+    legacy-services -> ci-service-check
+    init-migrations -> init-adduser
+    init-os-end -> init-config
+    init-config -> init-config-end
+    init-ddclient-config -> init-config-end
+    init-os-end -> init-crontab-config
+    init-mods-end -> init-custom-files
+    init-config -> init-ddclient-config
+    base -> init-envfile
+    base -> init-migrations
+    base -> init-mods
+    init-config-end -> init-mods
+    init-mods -> init-mods-end
+    init-mods-package-install -> init-mods-end
+    init-mods -> init-mods-package-install
+    base -> init-os-end
+    init-adduser -> init-os-end
+    init-envfile -> init-os-end
+    init-migrations -> init-os-end
+    init-custom-files -> init-services
+    init-mods-end -> init-services
+    init-services -> svc-cron
+    svc-cron -> legacy-services
+    init-services -> svc-ddclient
+    svc-ddclient -> legacy-services
+    init-services -> svc-inotify
+    svc-inotify -> legacy-services
+  }
+  Base Images: {
+    "baseimage-alpine:3.20"
+  }
+  "ddclient:latest" <- Base Images
 # changelog
 changelogs:
   - {date: "08.07.24:", desc: "Fix cache issue."}

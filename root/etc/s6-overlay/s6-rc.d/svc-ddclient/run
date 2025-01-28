@@ -1,5 +1,10 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-exec \
-    s6-setuidgid abc /usr/bin/ddclient --foreground --file /config/ddclient.conf --cache /run/ddclient-cache/ddclient.cache
+if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
+    exec \
+        s6-setuidgid abc /usr/bin/ddclient --foreground --file /config/ddclient.conf --cache /run/ddclient-cache/ddclient.cache
+else
+    exec \
+        /usr/bin/ddclient --foreground --file /config/ddclient.conf --cache /run/ddclient-cache/ddclient.cache
+fi

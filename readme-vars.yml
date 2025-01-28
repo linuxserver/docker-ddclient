@@ -20,6 +20,7 @@ param_volumes:
 readonly_supported: true
 readonly_message: |
   `/tmp` must also be mounted to tmpfs for this image.
+nonroot_supported: true
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |

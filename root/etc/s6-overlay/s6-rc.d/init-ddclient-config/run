@@ -11,11 +11,13 @@ if [[ ! -e /config/ddclient.conf ]]; then
     cp /defaults/ddclient.conf /config
 fi
 
-# permissions
-lsiown -R abc:abc \
-    /config \
-    /run/ddclient \
-    /run/ddclient-cache
+if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
+    # permissions
+    lsiown -R abc:abc \
+        /config \
+        /run/ddclient \
+        /run/ddclient-cache
+fi
 
 chmod 700 \
     /config \

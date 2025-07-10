@@ -76,6 +76,7 @@ init_diagram: |
   "ddclient:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "10.07.25:", desc: "Rebase to Alpine 3.22."}
   - {date: "08.07.24:", desc: "Fix cache issue."}
   - {date: "08.07.24:", desc: "Don't copy config from `/config/ddclient.conf` to `/ddclient.conf` at runtime."}
   - {date: "27.06.24:", desc: "Rebase to Alpine 3.20."}

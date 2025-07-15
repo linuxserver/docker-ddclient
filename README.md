@@ -288,6 +288,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **10.07.25:** - Rebase to Alpine 3.22.
 * **08.07.24:** - Fix cache issue.
 * **08.07.24:** - Don't copy config from `/config/ddclient.conf` to `/ddclient.conf` at runtime.
 * **27.06.24:** - Rebase to Alpine 3.20.

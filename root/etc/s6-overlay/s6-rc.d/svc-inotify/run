@@ -6,7 +6,9 @@ while inotifywait -e modify /config/ddclient.conf; do
     if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
         lsiown abc:abc /config/ddclient.conf
     fi
-    chmod 600 /config/ddclient.conf
+    if [ "${KEEP_PERMISSIONS:-false}" != "true" ]; then
+        chmod 600 /config/ddclient.conf
+    fi
     s6-svc -h /run/service/svc-ddclient
     echo "ddclient has been restarted"
 done

@@ -1,12 +1,16 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
+_keep_permissions="${KEEP_PERMISSIONS:-false}"
+
 # starting inotify to watch /config/ddclient.conf and restart ddclient if changed.
 while inotifywait -e modify /config/ddclient.conf; do
     if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
         lsiown abc:abc /config/ddclient.conf
     fi
-    chmod 600 /config/ddclient.conf
+    if [ "${_keep_permissions}" != "true" ]; then
+        chmod 600 /config/ddclient.conf
+    fi
     s6-svc -h /run/service/svc-ddclient
     echo "ddclient has been restarted"
 done

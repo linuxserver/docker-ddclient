@@ -19,9 +19,11 @@ if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
         /run/ddclient-cache
 fi
 
-chmod 700 \
-    /config \
-    /run/ddclient-cache
+if [ "${KEEP_PERMISSIONS:-false}" != "true" ]; then
+    chmod 700 \
+        /config \
+        /run/ddclient-cache
 
-chmod 600 \
-    /config/*
+    chmod 600 \
+        /config/*
+fi

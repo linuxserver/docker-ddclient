@@ -32,7 +32,7 @@ RUN \
   echo "**** install ddclient ****" && \
   if [ -z ${DDCLIENT_VERSION+x} ]; then \
     DDCLIENT_VERSION=$(curl -sX GET "https://api.github.com/repos/ddclient/ddclient/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
+    | jq -r '.tag_name'); \
   fi && \
   mkdir -p \
     /tmp/ddclient && \

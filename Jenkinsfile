@@ -45,7 +45,9 @@ pipeline {
       steps{
         sh '''#!/bin/bash
               cat ${GIT_SIGNING_KEY} > /config/.ssh/id_sign
-              chmod 600 /config/.ssh/id_sign
+              if [ "${KEEP_PERMISSIONS:-false}" != "true" ]; then
+                chmod 600 /config/.ssh/id_sign
+              fi
               ssh-keygen -y -f /config/.ssh/id_sign > /config/.ssh/id_sign.pub
               echo "Using $(ssh-keygen -lf /config/.ssh/id_sign) to sign commits"
               git config --global gpg.format ssh
